@@ -330,7 +330,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/box_round">    //page2 관광지 사진 리싸이클러뷰
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/page2_fragment_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

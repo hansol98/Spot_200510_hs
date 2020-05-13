@@ -9,7 +9,7 @@
 
 
     //카드뷰 *레이아웃 정렬이 안맞음 수정필*
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/page2_cardview"
         android:layout_width="126dp"
         android:layout_height="126dp"
@@ -72,5 +72,5 @@
                 android:layout_height="18dp"
                 android:background="@drawable/ic_icon_addmy" />
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
