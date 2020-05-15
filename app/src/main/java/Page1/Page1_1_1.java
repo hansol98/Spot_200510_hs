@@ -1,9 +1,9 @@
 package Page1;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hansol.spot_200510_hs.R;
 
@@ -39,11 +39,15 @@ public class Page1_1_1 extends AppCompatActivity {
         name.add("세번째");
         name.add("네번째");
 
-                //리사이클러뷰 안 리서이클러뷰에 들어갈 데이터
-        items.add(new Recycler_item("", "경복궁", "1234", "역사"));
-        items.add(new Recycler_item("", "창덕궁", "2345", "역사"));
-        items.add(new Recycler_item("", "덕수궁", "3456", "역사"));
-        items.add(new Recycler_item("", "창경궁", "4567", "역사"));
+        for (int i = 0 ; i < mySpot.size() ; i++) {
+            items.add(new Recycler_item("", mySpot.get(i), "1234", "역사"));
+        }
+
+//                //리사이클러뷰 안 리서이클러뷰에 들어갈 데이터
+//        items.add(new Recycler_item("", "경복궁", "1234", "역사"));
+//        items.add(new Recycler_item("", "창덕궁", "2345", "역사"));
+//        items.add(new Recycler_item("", "덕수궁", "3456", "역사"));
+//        items.add(new Recycler_item("", "창경궁", "4567", "역사"));
     }
 
     //리사이클러뷰 안 리사이클러뷰 데이터 구조

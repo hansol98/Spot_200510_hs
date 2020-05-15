@@ -1,14 +1,12 @@
 package Page2;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.hansol.spot_200510_hs.R;
-
-import Page2.Page2;
 
 public class Page2_1 extends AppCompatActivity implements View.OnClickListener {
     /*

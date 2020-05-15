@@ -3,10 +3,10 @@ package Page2;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +22,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import Page2_1_1.Page2_1_1;
+import Page2_1_1.course;
 
 public class Page2 extends AppCompatActivity {
 
@@ -166,9 +169,9 @@ public class Page2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), subject, Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(Page2.this, Page2_1_1.class);
-//                intent.putExtra("subject_title", subject);
-//                startActivity(intent);
+                Intent intent = new Intent(Page2.this, Page2_1_1.class);
+                intent.putExtra("subject_title", subject);
+                startActivity(intent);
             }
         });
     }
