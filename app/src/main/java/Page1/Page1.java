@@ -2,15 +2,22 @@ package Page1;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
+
+import DB.DbOpenHelper;
+import DB.Heart_page;
+import Page2_X.Page2_X;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,9 +26,11 @@ import com.example.hansol.spot_200510_hs.R;
 
 import java.util.ArrayList;
 
+import Page2_X.Page2_X_Main;
 import Page2.Page2;
 
 public class Page1 extends AppCompatActivity implements View.OnClickListener {
+
     // 부모 뷰
     private LinearLayout container;
     private LinearLayout container2;
@@ -32,9 +41,10 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
     String cat_text3 = null;
     String cat_text4 = null;
 
-    Button main_schedule;
-    Button main_register;
-    Button main_like;
+    ImageButton main_schedule;
+    ImageButton main_register;
+    ImageButton main_like;
+    TextView search_spot;
 
     int[] score = new int[8];
     // 도시 저장할 어레이리스트
@@ -45,11 +55,24 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
     ArrayList<Integer> cityPicture = new ArrayList<Integer>();  // 모든 데이터 다 들어감
     ArrayList<Integer> real_cityPicture = new ArrayList<Integer>();     // 중복제거 찐 도시사진 리스트
 
+    // 찜한 여행지 저장하는 리스트
+    private ArrayList<String > mySpot = new ArrayList<String >();
+
+    private DbOpenHelper mDbOpenHelper;
+    String sort = "userid";
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page1);
+
+        // DB열기
+        mDbOpenHelper = new DbOpenHelper(this);
+        mDbOpenHelper.open();
+        mDbOpenHelper.create();
+
+        showDatabase(sort);
 
         final Intent intent = getIntent();
         // 나중에 하기 버튼 눌렀을 때 임의의 값 넘겨주기
@@ -60,9 +83,10 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
             score = intent.getIntArrayExtra("Page9");
         }
 
-        main_schedule = (Button) findViewById(R.id.main_schedule);
-        main_register = (Button) findViewById(R.id.main_register);
-        main_like = (Button) findViewById(R.id.main_spot);
+        main_schedule = (ImageButton) findViewById(R.id.main_schedule);
+        main_register = (ImageButton) findViewById(R.id.main_register);
+        main_like = (ImageButton) findViewById(R.id.main_spot);
+        search_spot = (TextView) findViewById(R.id.search_spot);
 
         // 메인 스케줄 버튼 눌렀을 때
         main_schedule.setOnClickListener(new View.OnClickListener() {
@@ -79,8 +103,8 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
         main_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent2 = new Intent(getApplicationContext(), Page1_1.class);
-//                startActivity(intent2);
+                Intent intent2 = new Intent(getApplicationContext(), Heart_page.class);
+                startActivity(intent2);
             }
         });
 
@@ -88,8 +112,27 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
         main_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent3 = new Intent(getApplicationContext(), Page1_1_1.class);
-                startActivity(intent3);
+//                Intent intent3 = new Intent(getApplicationContext(), Page1_1_1.class);
+//                startActivity(intent3);
+                if (mySpot.size() == 0) {
+                    Intent intent3 = new Intent(getApplicationContext(), Page1_1_0.class);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent3);
+                } else {
+                    Intent intent3 = new Intent(getApplicationContext(), Page1_1_1.class);
+                    intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(intent3);
+                }
+            }
+        });
+
+        // 도시 검색 버튼 눌렀을 때
+        search_spot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent spotIntent = new Intent(getApplicationContext(), Page2_X.class);
+                spotIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(spotIntent);
             }
         });
 
@@ -370,10 +413,22 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
             cityName.setWidth(height);
 
             // 이름 지정 및 가져오기
-            City city = new City();
+            final City city = new City();
             city.setCityName(real_cityList.get(i).toString());
 
             cityName.setText(city.getCityName());
+            cityName.isClickable();
+
+            cityName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // 도시 버튼 눌렸을 때
+                    Intent cityIntent = new Intent(Page1.this.getApplicationContext(), Page2_X_Main.class);
+                    cityIntent.putExtra("Page1_stName", city.getCityName());
+                    cityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(cityIntent);
+                }
+            });
 
             // 백그라운드 사진 가져오기
             city.setCityPic(real_cityPicture.get(i));
@@ -414,6 +469,7 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
             Toast.makeText(getApplicationContext(), "4" + cat_text4, Toast.LENGTH_SHORT).show();
         }
 
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 
@@ -436,5 +492,43 @@ public class Page1 extends AppCompatActivity implements View.OnClickListener {
         public void setCityPic(int cityPic) {
             this.cityPic = cityPic;
         }
+    }
+
+    public void showDatabase(String sort){
+        Cursor iCursor = mDbOpenHelper.selectColumns();
+        //iCursor.moveToFirst();
+        Log.d("showDatabase", "DB Size: " + iCursor.getCount());
+        mySpot.clear();
+
+        while(iCursor.moveToNext()){
+            String tempName = iCursor.getString(iCursor.getColumnIndex("name"));
+            tempName = setTextLength(tempName,10);
+
+            mySpot.add(tempName);
+        }
+    }
+
+    public String setTextLength(String text, int length){
+        if(text.length()<length){
+            int gap = length - text.length();
+            for (int i=0; i<gap; i++){
+                text = text + " ";
+            }
+        }
+        return text;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
+
+    // 현재 액티비티 새로고침
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
     }
 }

@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         // api들어가는 곳
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/page1_1_1_fragment_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

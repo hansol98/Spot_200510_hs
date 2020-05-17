@@ -2,7 +2,7 @@ package com.example.hansol.spot_200510_hs;
 
 import android.content.Intent;
 import android.graphics.Paint;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -40,6 +40,7 @@ public class Page0_2 extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Page0_2.this, Page0.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });

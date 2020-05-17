@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="Page2.Page2"
     android:background="@drawable/ic_bg_photospot"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:id="@+id/page2_scroll">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_alignParentLeft="true" />
 
             // 프로필 버튼
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_profile"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -58,7 +59,7 @@
                 android:textColor="#000000"/>
 
             //전체 카테고리 *가려서 안보임 수정필*
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_cat_btn"
                 android:layout_width="97dp"
                 android:layout_height="31dp"
@@ -105,7 +106,7 @@
                     android:gravity="center_horizontal">
 
                     // 버튼
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/page2_couse_number"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -181,7 +182,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center_vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/page2_schedulePlus_btn"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -209,7 +210,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/page2_number_2"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -286,7 +287,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal|center_vertical">
 
-                    <Button
+                    <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/page2_schedulePlus_btn_2"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -330,7 +331,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/box_round">    //page2 관광지 사진 리싸이클러뷰
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/page2_fragment_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

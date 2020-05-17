@@ -2,12 +2,13 @@ package Page1;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hansol.spot_200510_hs.R;
@@ -79,6 +80,7 @@ public class Page1_1_1_Adapter extends RecyclerView.Adapter<Page1_1_1_Adapter.Vi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imageView;
         private TextView textView1;
         private RecyclerView recyclerView;
         private int position;

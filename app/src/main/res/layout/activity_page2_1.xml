@@ -30,7 +30,7 @@
             android:layout_alignParentLeft="true" />
 
         // 메뉴
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/page2_1_menu"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginBottom="5dp">
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:paddingLeft="8dp"
                 android:layout_marginRight="5dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:paddingLeft="8dp"
                 android:layout_marginRight="5dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                 android:paddingLeft="8dp"
                 android:layout_marginRight="5dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
             android:orientation="horizontal"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 android:paddingLeft="8dp"
                 android:layout_marginRight="5dp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/page2_1_subject_8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -187,70 +187,6 @@
                 android:paddingTop="2dp"
                 android:paddingLeft="8dp"
                 android:layout_marginLeft="5dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp">
-            <Button
-                android:id="@+id/page2_1_subject_9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="#공연/행사/축제"
-                android:background="@drawable/box_white_rad10"
-                android:textAppearance="@style/subtitle_text"
-                android:gravity="left|top"
-                android:paddingTop="2dp"
-                android:paddingLeft="8dp"
-                android:layout_marginRight="5dp" />
-
-            <Button
-                android:id="@+id/page2_1_subject_10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="#음식점"
-                android:background="@drawable/box_white_rad10"
-                android:textAppearance="@style/subtitle_text"
-                android:gravity="left|top"
-                android:paddingTop="2dp"
-                android:paddingLeft="8dp"
-                android:layout_marginLeft="5dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp">
-            <Button
-                android:id="@+id/page2_1_subject_11"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="#숙소"
-                android:background="@drawable/box_white_rad10"
-                android:textAppearance="@style/subtitle_text"
-                android:gravity="left|top"
-                android:paddingTop="2dp"
-                android:paddingLeft="8dp"
-                android:layout_marginRight="5dp" />
-
-            <Button
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="#음식점"
-                android:background="@drawable/box_white_rad10"
-                android:textAppearance="@style/subtitle_text"
-                android:textStyle="bold"
-                android:gravity="left|top"
-                android:paddingTop="2dp"
-                android:paddingLeft="8dp"
-                android:layout_marginLeft="5dp"
-                android:visibility="invisible"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

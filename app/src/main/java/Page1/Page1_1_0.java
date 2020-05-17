@@ -1,6 +1,6 @@
 package Page1;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -34,5 +34,11 @@ public class Page1_1_0 extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "추천 코스", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
     }
 }

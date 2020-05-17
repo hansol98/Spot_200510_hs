@@ -24,11 +24,11 @@
             android:layout_alignParentTop="true"/>
 
         // 프로필 버튼
-        <Button
+        <ImageButton
             android:id="@+id/main_profile"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:background="@drawable/round_gray"
+            android:background="@drawable/ic_top_menu"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="8dp"/>
@@ -55,7 +55,7 @@
             android:orientation="horizontal"
             android:layout_centerInParent="true">
             // 스케쥴짜기 버튼
-            <Button
+            <ImageButton
                 android:id="@+id/main_schedule"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -64,7 +64,7 @@
                 android:layout_marginRight="16dp" />
 
             // 일정등록 버튼
-            <Button
+            <ImageButton
                 android:id="@+id/main_register"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -74,7 +74,7 @@
                 android:layout_marginRight="16dp"/>
 
             // 찜한 관광지 버튼
-            <Button
+            <ImageButton
                 android:id="@+id/main_spot"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

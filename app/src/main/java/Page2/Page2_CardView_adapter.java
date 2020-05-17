@@ -1,9 +1,10 @@
 package Page2;
 
+import android.content.Context;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.RequiresApi;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.hansol.spot_200510_hs.R;
 
 import java.util.List;
 
 public class Page2_CardView_adapter extends RecyclerView.Adapter<Page2_CardView_adapter.ViewHolder> {
+
+    Context context;
     private Page2 mainActivity;
     private String[] stay = new String[5];  // 하트의 클릭 여부
     private List<Recycler_item> cardview_items;  //리사이클러뷰 안에 들어갈 값 저장
@@ -29,20 +33,18 @@ public class Page2_CardView_adapter extends RecyclerView.Adapter<Page2_CardView_
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        this.context = parent.getContext();
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.page2_cardview_item, null);
         return new ViewHolder(v);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Recycler_item item = cardview_items.get(position);
 
-        if (item.getImage() == null) {
-            Log.i("이미지가 없을때", "널이다 이녀석아,,");
-        } else {
-            //이미지뷰에 url 이미지 넣기.
-            //Glide.with(mainActivity).load(item.getImage()).centerCrop().into(holder.image);
-        }
+        //이미지뷰에 url 이미지 넣기.
+        Glide.with(context).load(item.getImage()).centerCrop().into(holder.image);
 
         holder.title.setText(item.getTitle());
         //holder.title.setSelected(true); //적용하면 텍스트 흐르면서 전체보여줌
