@@ -42,8 +42,10 @@
         <activity android:name="Page2_1_1.Page2_1_1" />
         <activity android:name="Page2_1_X.Page2_1_X" />
         <activity android:name="Page2_X.Page2_X" />
-        <activity android:name="Page2_X.Page2_X_Main"/>
-        <activity android:name="DB.Heart_page"/>
+        <activity android:name="Page2_X.Page2_X_Main" />
+        <activity android:name="DB.Heart_page" />
+        <activity android:name="Page2_1_X.Page2_1_X_ImageSelected"
+            android:theme="@style/Transparent"></activity>
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 public class Page2_1_X_ImageFragment extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page2_1_x_fragment_image, container, false);
 
         ImageView imageView = view.findViewById(R.id.page2_1_1_imageView);
@@ -35,6 +35,7 @@ public class Page2_1_X_ImageFragment extends Fragment {
                 Toast.makeText(getContext(), "눌렸음", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), Page2_1_X_ImageSelected.class);
                 intent.putExtra("setImgRes", getArguments());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });

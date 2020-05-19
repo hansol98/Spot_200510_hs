@@ -17,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.hansol.spot_200510_hs.OnItemClick;
 import com.example.hansol.spot_200510_hs.R;
 
@@ -54,8 +57,14 @@ public class Page1_1_1_SecondAdapter extends RecyclerView.Adapter<Page1_1_1_Seco
         final Page1_1_1.Recycler_item item=items.get(position);
 
         holder.title.setText(items.get(position).title);
-        //이미지뷰에 url 이미지 넣기.
-        Glide.with(context).load(item.getImage()).centerCrop().into(holder.imageView);
+//        //이미지뷰에 url 이미지 넣기.
+//        Glide.with(context).load(item.getImage()).centerCrop().into(holder.imageView);
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(16));
+        Glide.with(context).load(item.getImage()).apply(requestOptions).into(holder.imageView);
+
+        holder.type.setText(item.type);
 
 //        holder.heart.setOnClickListener(new View.OnClickListener() {
 //            @Override

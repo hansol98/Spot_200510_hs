@@ -102,8 +102,12 @@ public class Heart_page extends AppCompatActivity {
                 tempID = setTextLength(tempID,10);
                 String tempName = iCursor.getString(iCursor.getColumnIndex("name"));
                 tempName = setTextLength(tempName,10);
+                String tempImg = iCursor.getString(iCursor.getColumnIndex("image"));
+                tempImg = setTextLength(tempImg, 100);
+                String tempType = iCursor.getString(iCursor.getColumnIndex("type"));
+                tempType = setTextLength(tempType, 10);
 
-                String Result = tempID + tempName;
+                String Result = tempID + tempName + tempImg + tempType;
                 arrayData.add(Result);
                 arrayIndex.add(tempIndex);
             }

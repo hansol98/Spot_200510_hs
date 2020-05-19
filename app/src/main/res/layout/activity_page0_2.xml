@@ -13,10 +13,10 @@
         android:id="@+id/page0_3_back"
         android:layout_width="43dp"
         android:layout_height="43dp"
-        android:background="@drawable/round_white"
-        android:elevation="5dp"
+        android:background="@drawable/ic_icon_back_page0"
+        android:elevation="10dp"
         android:clickable="true"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp" />
 
     // Step 부분
     <RelativeLayout

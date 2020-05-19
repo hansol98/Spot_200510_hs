@@ -667,6 +667,7 @@ public class Page2_X_Main extends AppCompatActivity implements Page2_X_Interface
         String cat1;
         String cat2;
         String contenttypeid;
+        String type;
 
         String getImage() {
             return this.image;
@@ -698,6 +699,10 @@ public class Page2_X_Main extends AppCompatActivity implements Page2_X_Interface
 
         public String getContenttypeid() {
             return contenttypeid;
+        }
+
+        public String getType() {
+            return type;
         }
 
         public Recycler_item(String image, String title, String contentviewID, String mapx, String mapy, String cat1, String cat2, String contenttypeid) {
@@ -890,10 +895,20 @@ public class Page2_X_Main extends AppCompatActivity implements Page2_X_Interface
 
     //인터페이스 부분/ db에 넣는다.
     @Override
-    public void make_db(String countId, String name) {
+    public void make_db(String countId, String name, String image, String type) {
         mDbOpenHelper.open();
-        mDbOpenHelper.insertColumn(countId, name);
+        mDbOpenHelper.insertColumn(countId, name, image, type);
         mDbOpenHelper.close();
+    }
+
+    @Override
+    public void delete_db(String countId) {
+        mDbOpenHelper.open();
+        mDbOpenHelper.deleteColumnByContentID(countId);
+        mDbOpenHelper.close();
+
+        // 다이얼로그 띄우기
+        delete_dialog();
     }
 
     //인터페이스
@@ -912,6 +927,27 @@ public class Page2_X_Main extends AppCompatActivity implements Page2_X_Interface
             }
         });
 
+        builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
+    }
+
+    public void delete_dialog() {
+        final android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("관심관광지 삭제 성공");
+        builder.setMessage("관심관광지 목록을 확인하시겠습니까?");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //관심관광지 페이지로 감
+                Intent intent = new Intent(Page2_X_Main.this, Heart_page.class);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
         builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

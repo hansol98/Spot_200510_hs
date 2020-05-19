@@ -22,7 +22,10 @@ public class Page1_1_1 extends AppCompatActivity {
     ArrayList<String> name = new ArrayList<>();
     private List<Recycler_item> items = new ArrayList<Recycler_item>();
 
-    private ArrayList<String > mySpot = new ArrayList<String >();
+    private ArrayList<String > mySpot = new ArrayList<String >();   // 타이틀 저장
+    private ArrayList<String> myContentID = new ArrayList<String >();  // contentId저장
+    private ArrayList<String> myImage = new ArrayList<String >();  // 이미지저장
+    private ArrayList<String> myType = new ArrayList<String >();  // 타입 저장
 
     private DbOpenHelper mDbOpenHelper;
     String sort = "userid";
@@ -52,7 +55,7 @@ public class Page1_1_1 extends AppCompatActivity {
         name.add("네번째");
 
         for (int i = 0 ; i < mySpot.size() ; i++) {
-            items.add(new Recycler_item("", mySpot.get(i), "1234", "역사"));
+            items.add(new Recycler_item(myImage.get(i), mySpot.get(i), myContentID.get(i), myType.get(i)));
         }
 
         adapter.notifyDataSetChanged();
@@ -100,12 +103,24 @@ public class Page1_1_1 extends AppCompatActivity {
         //iCursor.moveToFirst();
         Log.d("showDatabase", "DB Size: " + iCursor.getCount());
         mySpot.clear();
+        myContentID.clear();
+        myImage.clear();
+        myType.clear();
 
         while(iCursor.moveToNext()){
+            String tempID = iCursor.getString(iCursor.getColumnIndex("userid"));
+            tempID = setTextLength(tempID,10);
             String tempName = iCursor.getString(iCursor.getColumnIndex("name"));
             tempName = setTextLength(tempName,10);
+            String tempImage = iCursor.getString(iCursor.getColumnIndex("image"));
+            tempImage = setTextLength(tempImage, 100);
+            String tempType = iCursor.getString(iCursor.getColumnIndex("type"));
+            tempType = setTextLength(tempType, 10);
 
             mySpot.add(tempName);
+            myContentID.add(tempID);
+            myImage.add(tempImage);
+            myType.add(tempType);
         }
     }
 

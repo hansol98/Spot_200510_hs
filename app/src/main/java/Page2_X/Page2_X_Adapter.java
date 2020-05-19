@@ -92,11 +92,12 @@ public class Page2_X_Adapter extends RecyclerView.Adapter<Page2_X_Adapter.ViewHo
             public void onClick(View v) {
                 if(stay[position]==null){
                     holder.heart.setBackgroundResource(R.drawable.ic_heart_on);
-                    mCallback.make_db(item.getContentviewID(), item.getTitle());   //countId랑 title을 db에 넣으려고 함( make_db라는 인터페이스 이용)
+                    mCallback.make_db(item.getContentviewID(), item.getTitle(), item.getImage(), (String) holder.type.getText());   //countId랑 title을 db에 넣으려고 함( make_db라는 인터페이스 이용)
                     mCallback.make_dialog();                                       //db에 잘 넣으면 띄우는 다이얼로그(위와 마찬가지로 인터페이스 이용
                     stay[position] = "ON";
                 } else{
                     holder.heart.setBackgroundResource(R.drawable.ic_icon_addmy);
+                    mCallback.delete_db(item.contentviewID);
                     stay[position] = null;
                     Toast.makeText(context,"관심관광지를 취소했습니다",Toast.LENGTH_SHORT).show();
                 }

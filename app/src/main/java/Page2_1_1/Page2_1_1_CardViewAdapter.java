@@ -87,6 +87,7 @@ public class Page2_1_1_CardViewAdapter extends RecyclerView.Adapter<Page2_1_1_Ca
                     Toast.makeText(context, item.getTitle() + "눌림", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, Page2_1_X.class);
                     intent.putExtra("title", item.getTitle());
+                    intent.putExtra("contentID", item.getContentviewID());
                     context.startActivity(intent);
                 }
             }

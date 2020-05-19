@@ -51,18 +51,22 @@ public class DbOpenHelper {
     }
 
     // Insert DB
-    public long insertColumn(String userid, String name){
+    public long insertColumn(String userid, String name, String image, String type){
         ContentValues values = new ContentValues();
         values.put(DataBases.CreateDB.USERID, userid);
         values.put(DataBases.CreateDB.NAME, name);
+        values.put(DataBases.CreateDB.IMAGE, image);
+        values.put(DataBases.CreateDB.TYPE, type);
         return mDB.insert(DataBases.CreateDB._TABLENAME0, null, values);
     }
 
     // Update DB
-    public boolean updateColumn(long id, String userid, String name){
+    public boolean updateColumn(long id, String userid, String name, String image, String type){
         ContentValues values = new ContentValues();
         values.put(DataBases.CreateDB.USERID, userid);
         values.put(DataBases.CreateDB.NAME, name);
+        values.put(DataBases.CreateDB.IMAGE, image);
+        values.put(DataBases.CreateDB.TYPE, type);
         return mDB.update(DataBases.CreateDB._TABLENAME0, values, "_id=" + id, null) > 0;
     }
 
@@ -75,6 +79,12 @@ public class DbOpenHelper {
     public boolean deleteColumn(long id){
         return mDB.delete(DataBases.CreateDB._TABLENAME0, "_id="+id, null) > 0;
     }
+
+    // Delete DB
+    public boolean deleteColumnByContentID(String contentId){
+        return mDB.delete(DataBases.CreateDB._TABLENAME0, "userid="+contentId, null) > 0;
+    }
+
     // Select DB
     public Cursor selectColumns(){
         return mDB.query(DataBases.CreateDB._TABLENAME0, null, null, null, null, null, null);
